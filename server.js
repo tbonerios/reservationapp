@@ -47,7 +47,7 @@ app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 // Search for tables - provides JSON
-app.get("/api/:tables?", function(req, res) {
+app.get("/api/tables", function(req, res) {
   var chosen = req.params.tables;
 
   if (chosen) {
@@ -64,13 +64,13 @@ app.get("/api/:tables?", function(req, res) {
 });
 
 // Create New table - takes in JSON input
-app.post("/api/new", function(req, res) {
+app.post("/api/tables", function(req, res) {
   var newtable = req.body;
-  newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
+  //newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newtable);
 
-  characters.push(newtable);
+  tables.push(newtable);
 
   res.json(newtable);
 });
